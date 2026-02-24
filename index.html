@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bilgili</title>
-
 <style>
 body {
     margin: 0;
@@ -32,7 +31,7 @@ body {
 
 /* ANA ALAN */
 .main {
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,9 +40,9 @@ body {
 
 /* LOGO */
 .logo img {
-    width: 380px;
+    width: 360px;
     background: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 14px;
     transition: 0.4s;
 }
@@ -53,27 +52,31 @@ body {
 
 /* ALT KISIM */
 .bottom-section {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    padding: 0 120px 60px 120px;
-    box-sizing: border-box;
+    justify-content: center;
+    gap: 120px;
+    margin-bottom: 80px;
 }
 
+/* BAŞLIK */
 .title {
     cursor: pointer;
     font-size: 28px;
     font-weight: bold;
     transition: 0.3s;
+    text-align: center;
 }
 .title:hover {
     color: orange;
 }
 
+/* LİSTE */
 .list {
     display: none;
     margin-top: 10px;
+    text-align: center;
 }
+
 .list a {
     display: block;
     font-size: 18px;
@@ -98,13 +101,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: -5px 0 25px rgba(0,0,0,0.7);
-    animation: fadeIn 0.3s ease;
     z-index: 1000;
-}
-
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(-10px);}
-    to {opacity:1; transform: translateY(0);}
 }
 
 .contact-panel iframe {
@@ -119,32 +116,23 @@ body {
 @media (max-width: 768px) {
 
     .logo img {
-        width: 250px;
+        width: 230px;
         padding: 20px;
     }
 
     .bottom-section {
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 0;
-        gap: 40px;
+        gap: 60px;   /* Yan yana ama daha yakın */
+        margin-bottom: 60px;
     }
 
     .title {
-        font-size: 24px;
-        text-align: center;
-    }
-
-    .list {
-        text-align: center;
+        font-size: 22px;
     }
 
     .contact-panel {
         width: 90%;
         right: 5%;
-        top: 80px;
     }
-
 }
 </style>
 </head>
@@ -219,3 +207,4 @@ function toggle(id) {
 
 </body>
 </html>
+
