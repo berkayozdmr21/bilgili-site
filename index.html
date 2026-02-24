@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilgili</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* LOGO */
+.logo {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.logo img {
+    width: 380px;   
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    transition: 0.4s;
+}
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* PVC */
+.pvc {
+    position: absolute;
+    bottom: 60px;
+    left: 120px;
+}
+
+/* ALÜMİNYUM */
+.aluminyum {
+    position: absolute;
+    bottom: 60px;
+    right: 120px;
+    text-align: right;
+}
+
+.title {
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.title:hover {
+    color: orange;
+    transform: translateY(-3px);
+}
+
+.list {
+    display: none;
+    margin-top: 8px;
+}
+.list a {
+    display: block;
+    font-size: 18px;
+    margin: 4px 0;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+.list a:hover {
+    color: orange;
+    padding-left: 6px;
+}
+
+/* İLETİŞİM BUTONU */
+.contact-btn {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.contact-btn:hover {
+    color: orange;
+    transform: translateY(-3px);
+}
+
+/* İLETİŞİM PANEL */
+.contact-panel {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    width: 360px;
+    background: #111;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-10px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.contact-panel h3 {
+    margin-top: 0;
+}
+
+.contact-panel iframe {
+    width: 100%;
+    height: 220px;
+    border: 0;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
+/* Mobil uyum */
+@media (max-width: 768px) {
+    .logo {
+        top: 35%;
+    }
+    .logo img {
+        width: 240px;
+    }
+    .pvc, .aluminyum {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- İLETİŞİM BUTONU -->
+<div class="contact-btn" onclick="toggle('contactPanel')">
+    İLETİŞİM
+</div>
+
+<!-- LOGO -->
+<div class="logo">
+    <img src="images/logo.png" alt="Bilgili Logo">
+</div>
+
+<!-- PVC -->
+<div class="pvc">
+    <div class="title" onclick="toggle('pvcList')">PVC</div>
+    <div class="list" id="pvcList">
+        <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">⭐ GrossTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/megatec-serisi-tr" target="_blank">MegaTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/supertec-serisi-tr" target="_blank">SuperTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/divatec-serisi-tr" target="_blank">DivaTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/ovaltec-serisi-tr" target="_blank">OvalTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/ovaltec-eko-serisi-tr" target="_blank">OvalTEC EKO Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/tritec-serisi-tr" target="_blank">TriTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/fortec-serisi-tr" target="_blank">ForTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/surmetec-serisi-tr" target="_blank">SürmeTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/ultratec-serisi-tr" target="_blank">UltraTEC Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/ultratec-plus-serisi-tr" target="_blank">UltraTEC Plus Serisi</a>
+        <a href="https://tecnoplas.com.tr/tr/60mm-lik-ortak-profiller-tr" target="_blank">60mm'lik Ortak Profiller</a>
+    </div>
+</div>
+
+<!-- ALÜMİNYUM -->
+<div class="aluminyum">
+    <div class="title" onclick="toggle('aluList')">Alüminyum</div>
+    <div class="list" id="aluList">
+        <a href="#">alüminyum1</a>
+        <a href="#">alüminyum2</a>
+    </div>
+</div>
+
+<!-- İLETİŞİM PANELİ -->
+<div class="contact-panel" id="contactPanel">
+    <h3>İletişim</h3>
+
+    <p><b>Adres:</b><br>
+    İskenderun Teknik Üniversitesi<br>
+    Hatay
+    </p>
+
+    <p><b>Telefon:</b> 05xx xxx xx xx</p>
+    <p><b>E-posta:</b> info@bilgili.com</p>
+
+    <iframe 
+        src="https://www.google.com/maps?q=iskenderun+teknik+üniversitesi&output=embed"
+        loading="lazy">
+    </iframe>
+</div>
+
+<script>
+function toggle(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
