@@ -11,9 +11,10 @@ body{
     background:black;
     color:white;
     font-family:Arial, sans-serif;
+    overflow-x:hidden;
 }
 
-/* ÜST ALAN */
+/* HEADER */
 .header{
     display:flex;
     justify-content:flex-end;
@@ -24,74 +25,85 @@ body{
     cursor:pointer;
     font-weight:bold;
     font-size:18px;
-    transition:0.3s;
+    transition:.3s;
 }
 .contact-btn:hover{
     color:orange;
 }
 
-/* ANA MERKEZ */
+/* CENTER */
 .center{
     display:flex;
-    flex-direction:column;
-    align-items:center;
     justify-content:center;
-    min-height:60vh;
+    align-items:center;
+    height:60vh;
 }
 
-/* LOGO */
 .logo img{
-    width:340px;
+    width:320px;
     background:white;
     padding:25px;
     border-radius:14px;
-    transition:0.3s;
+    transition:.3s;
 }
 .logo img:hover{
     transform:scale(1.05);
 }
 
-/* ALT MENÜ */
+/* MENU */
 .menu{
     display:flex;
     justify-content:center;
-    gap:120px;
-    margin:60px 0;
-    flex-wrap:nowrap; /* mobilde bile yan yana */
+    gap:100px;
+    margin-bottom:100px;
+    position:relative;
+    flex-wrap:nowrap; /* mobilde de yan yana */
 }
 
-/* BAŞLIK */
+/* ITEM */
+.menu-item{
+    position:relative; /* liste bunun üstüne konacak */
+    text-align:center;
+}
+
 .title{
     cursor:pointer;
-    font-size:28px;
+    font-size:26px;
     font-weight:bold;
-    text-align:center;
-    transition:0.3s;
+    transition:.3s;
 }
 .title:hover{
     color:orange;
 }
 
-/* LİSTE */
+/* LIST OVERLAY */
 .list{
     display:none;
-    margin-top:10px;
-    text-align:center;
+    position:absolute;
+    bottom:40px; /* yukarı doğru açılsın */
+    left:50%;
+    transform:translateX(-50%);
+    background:#111;
+    padding:15px 20px;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,.6);
+    min-width:220px;
+    z-index:999;
 }
 
 .list a{
     display:block;
-    margin:6px 0;
-    text-decoration:none;
     color:white;
-    font-size:18px;
-    transition:0.3s;
+    text-decoration:none;
+    margin:6px 0;
+    font-size:16px;
+    transition:.3s;
 }
 .list a:hover{
     color:orange;
 }
 
-/* İLETİŞİM PANEL */
+/* CONTACT PANEL */
 .contact-panel{
     display:none;
     position:fixed;
@@ -101,7 +113,7 @@ body{
     background:#111;
     padding:20px;
     border-radius:10px;
-    box-shadow:0 0 20px rgba(0,0,0,0.7);
+    box-shadow:0 0 20px rgba(0,0,0,.7);
     z-index:1000;
 }
 
@@ -113,19 +125,19 @@ body{
     border-radius:6px;
 }
 
-/* MOBİL */
+/* MOBILE */
 @media(max-width:768px){
 
     .logo img{
-        width:220px;
+        width:200px;
     }
 
     .menu{
-        gap:60px; /* mobilde daha yakın */
+        gap:50px;
     }
 
     .title{
-        font-size:22px;
+        font-size:20px;
     }
 
     .contact-panel{
@@ -152,25 +164,16 @@ body{
 
 <div class="menu">
 
-    <div>
+    <div class="menu-item">
         <div class="title" onclick="toggle('pvcList')">PVC</div>
         <div class="list" id="pvcList">
-            <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">⭐ GrossTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/megatec-serisi-tr" target="_blank">MegaTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/supertec-serisi-tr" target="_blank">SuperTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/divatec-serisi-tr" target="_blank">DivaTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/ovaltec-serisi-tr" target="_blank">OvalTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/ovaltec-eko-serisi-tr" target="_blank">OvalTEC EKO Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/tritec-serisi-tr" target="_blank">TriTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/fortec-serisi-tr" target="_blank">ForTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/surmetec-serisi-tr" target="_blank">SürmeTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/ultratec-serisi-tr" target="_blank">UltraTEC Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/ultratec-plus-serisi-tr" target="_blank">UltraTEC Plus Serisi</a>
-            <a href="https://tecnoplas.com.tr/tr/60mm-lik-ortak-profiller-tr" target="_blank">60mm'lik Ortak Profiller</a>
+            <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">GrossTEC</a>
+            <a href="https://tecnoplas.com.tr/tr/megatec-serisi-tr" target="_blank">MegaTEC</a>
+            <a href="https://tecnoplas.com.tr/tr/supertec-serisi-tr" target="_blank">SuperTEC</a>
         </div>
     </div>
 
-    <div>
+    <div class="menu-item">
         <div class="title" onclick="toggle('aluList')">Alüminyum</div>
         <div class="list" id="aluList">
             <a href="#">Alüminyum 1</a>
@@ -182,19 +185,12 @@ body{
 
 <div class="contact-panel" id="contactPanel">
     <h3>İletişim</h3>
-
     <p><b>Adres:</b><br>
     İskenderun Teknik Üniversitesi<br>
-    Hatay
-    </p>
-
+    Hatay</p>
     <p><b>Telefon:</b> 05xx xxx xx xx</p>
     <p><b>E-posta:</b> info@bilgili.com</p>
-
-    <iframe 
-        src="https://www.google.com/maps?q=iskenderun+teknik+üniversitesi&output=embed"
-        loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps?q=iskenderun+teknik+üniversitesi&output=embed"></iframe>
 </div>
 
 <script>
