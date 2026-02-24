@@ -4,134 +4,133 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bilgili</title>
+
 <style>
-body {
-    margin: 0;
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
+body{
+    margin:0;
+    background:black;
+    color:white;
+    font-family:Arial, sans-serif;
 }
 
-/* ÜST BAR */
-.top-bar {
-    display: flex;
-    justify-content: flex-end;
-    padding: 25px 35px;
+/* ÜST ALAN */
+.header{
+    display:flex;
+    justify-content:flex-end;
+    padding:25px 35px;
 }
 
-.contact-btn {
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.3s;
+.contact-btn{
+    cursor:pointer;
+    font-weight:bold;
+    font-size:18px;
+    transition:0.3s;
 }
-.contact-btn:hover {
-    color: orange;
+.contact-btn:hover{
+    color:orange;
 }
 
-/* ANA ALAN */
-.main {
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* ANA MERKEZ */
+.center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:60vh;
 }
 
 /* LOGO */
-.logo img {
-    width: 360px;
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    transition: 0.4s;
+.logo img{
+    width:340px;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    transition:0.3s;
 }
-.logo img:hover {
-    transform: scale(1.05);
+.logo img:hover{
+    transform:scale(1.05);
 }
 
-/* ALT KISIM */
-.bottom-section {
-    display: flex;
-    justify-content: center;
-    gap: 120px;
-    margin-bottom: 80px;
+/* ALT MENÜ */
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:120px;
+    margin:60px 0;
+    flex-wrap:nowrap; /* mobilde bile yan yana */
 }
 
 /* BAŞLIK */
-.title {
-    cursor: pointer;
-    font-size: 28px;
-    font-weight: bold;
-    transition: 0.3s;
-    text-align: center;
+.title{
+    cursor:pointer;
+    font-size:28px;
+    font-weight:bold;
+    text-align:center;
+    transition:0.3s;
 }
-.title:hover {
-    color: orange;
+.title:hover{
+    color:orange;
 }
 
 /* LİSTE */
-.list {
-    display: none;
-    margin-top: 10px;
-    text-align: center;
+.list{
+    display:none;
+    margin-top:10px;
+    text-align:center;
 }
 
-.list a {
-    display: block;
-    font-size: 18px;
-    margin: 6px 0;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
+.list a{
+    display:block;
+    margin:6px 0;
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    transition:0.3s;
 }
-.list a:hover {
-    color: orange;
-    padding-left: 6px;
+.list a:hover{
+    color:orange;
 }
 
 /* İLETİŞİM PANEL */
-.contact-panel {
-    display: none;
-    position: fixed;
-    top: 70px;
-    right: 30px;
-    width: 360px;
-    background: #111;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.7);
-    z-index: 1000;
+.contact-panel{
+    display:none;
+    position:fixed;
+    top:70px;
+    right:30px;
+    width:360px;
+    background:#111;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,0.7);
+    z-index:1000;
 }
 
-.contact-panel iframe {
-    width: 100%;
-    height: 220px;
-    border: 0;
-    margin-top: 10px;
-    border-radius: 6px;
+.contact-panel iframe{
+    width:100%;
+    height:220px;
+    border:0;
+    margin-top:10px;
+    border-radius:6px;
 }
 
 /* MOBİL */
-@media (max-width: 768px) {
+@media(max-width:768px){
 
-    .logo img {
-        width: 230px;
-        padding: 20px;
+    .logo img{
+        width:220px;
     }
 
-    .bottom-section {
-        gap: 60px;   /* Yan yana ama daha yakın */
-        margin-bottom: 60px;
+    .menu{
+        gap:60px; /* mobilde daha yakın */
     }
 
-    .title {
-        font-size: 22px;
+    .title{
+        font-size:22px;
     }
 
-    .contact-panel {
-        width: 90%;
-        right: 5%;
+    .contact-panel{
+        width:90%;
+        right:5%;
     }
 }
 </style>
@@ -139,19 +138,19 @@ body {
 
 <body>
 
-<div class="top-bar">
+<div class="header">
     <div class="contact-btn" onclick="toggle('contactPanel')">
         İLETİŞİM
     </div>
 </div>
 
-<div class="main">
+<div class="center">
     <div class="logo">
         <img src="images/logo.png" alt="Bilgili Logo">
     </div>
 </div>
 
-<div class="bottom-section">
+<div class="menu">
 
     <div>
         <div class="title" onclick="toggle('pvcList')">PVC</div>
@@ -199,7 +198,7 @@ body {
 </div>
 
 <script>
-function toggle(id) {
+function toggle(id){
     const el = document.getElementById(id);
     el.style.display = el.style.display === "block" ? "none" : "block";
 }
@@ -207,4 +206,3 @@ function toggle(id) {
 
 </body>
 </html>
-
