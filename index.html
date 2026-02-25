@@ -31,7 +31,7 @@ body{
     color:orange;
 }
 
-/* CENTER */
+/* CENTER - LOGO BÜYÜTÜLDÜ */
 .center{
     display:flex;
     justify-content:center;
@@ -40,11 +40,12 @@ body{
 }
 
 .logo img{
-    width:320px;
+    width:450px; /* Logo boyutu artırıldı */
     background:white;
-    padding:25px;
+    padding:30px;
     border-radius:14px;
     transition:.3s;
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
 .logo img:hover{
     transform:scale(1.05);
@@ -55,7 +56,7 @@ body{
     display:flex;
     justify-content:center;
     gap:100px;
-    margin-bottom: 200px; /* Aşağı açılan liste için boşluk artırıldı */
+    margin-bottom:200px; 
     position:relative;
     flex-wrap:nowrap; 
 }
@@ -64,13 +65,13 @@ body{
 .menu-item{
     position:relative; 
     text-align:center;
-    width: 300px; 
+    width: 320px; 
 }
 
 /* GÖRSEL STİLİ */
 .menu-item img.item-img {
     width: 100%;
-    min-height: 150px;
+    min-height: 180px;
     background: #222;
     border: 4px solid white; 
     border-radius: 8px;
@@ -81,41 +82,37 @@ body{
 
 .title{
     cursor:pointer;
-    font-size:22px; 
+    font-size:24px; 
     font-weight:bold;
     transition:.3s;
     position: absolute;
-    /* Yazı görselin biraz üzerinde kalsın, liste altından başlasın */
-    bottom: -15px; 
+    bottom: -20px; /* Yazı görselin biraz altında */
     left: 50%;
     transform: translateX(-50%);
     background: white;
     color: #b10000; 
-    padding: 5px 25px;
+    padding: 8px 30px;
     border-radius: 8px;
     white-space: nowrap;
-    z-index: 10;
-}
-.title:hover{
-    color: orange;
+    z-index: 20; /* Yazı listenin üstünde kalsın */
 }
 
-/* LIST OVERLAY - AŞAĞI DOĞRU AÇILACAK ŞEKİLDE DÜZENLENDİ */
+/* LIST OVERLAY - TAMAMEN AŞAĞIYA AÇILAN YAPI */
 .list{
     display:none;
     position:absolute;
-    top: 100%; /* Kartın hemen altından başla */
-    margin-top: 25px; /* Yazı etiketiyle çakışmaması için boşluk */
+    top: 100%; /* Kartın tam alt sınırından başlar */
     left:50%;
     transform:translateX(-50%);
+    margin-top: 30px; /* Başlık etiketiyle çakışmaması için mesafe */
     background:#111;
     padding:15px 20px;
     border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.8);
-    min-width:280px;
-    max-height: 350px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.9);
+    min-width:300px;
+    max-height: 400px;
     overflow-y: auto;
-    z-index: 999;
+    z-index: 1000;
     border: 1px solid #333;
 }
 
@@ -123,15 +120,16 @@ body{
     display:block;
     color:white;
     text-decoration:none;
-    margin:8px 0;
-    font-size:15px;
+    margin:10px 0;
+    font-size:16px;
     transition:.3s;
     text-align: left;
     border-bottom: 1px solid #222;
-    padding: 5px 0;
+    padding-bottom: 5px;
 }
 .list a:hover{
     color:orange;
+    padding-left: 5px;
 }
 
 /* CONTACT PANEL */
@@ -145,16 +143,16 @@ body{
     padding:20px;
     border-radius:10px;
     box-shadow:0 0 20px rgba(0,0,0,.7);
-    z-index:1000;
+    z-index:1001;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-    .logo img{ width:180px; }
-    .menu{ gap:20px; }
-    .menu-item { width: 150px; }
-    .title{ font-size:14px; padding: 3px 10px; bottom: -10px; }
-    .list { min-width: 180px; }
+    .logo img{ width:280px; }
+    .menu{ gap:20px; flex-wrap: wrap; } /* Mobilde üst üste binmemesi için wrap yapıldı */
+    .menu-item { width: 160px; }
+    .title{ font-size:14px; padding: 4px 12px; bottom: -12px; }
+    .list { min-width: 220px; }
 }
 </style>
 </head>
@@ -213,6 +211,9 @@ body{
 <script>
 function toggle(id){
     const el = document.getElementById(id);
+    // Diğer açık olan listeleri kapatmak istersen bu satırı aktif edebilirsin:
+    // document.querySelectorAll('.list').forEach(l => { if(l.id !== id) l.style.display = 'none'; });
+    
     el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
