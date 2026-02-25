@@ -31,7 +31,7 @@ body{
     color:orange;
 }
 
-/* CENTER - LOGO */
+/* CENTER - LOGO BÜYÜTÜLDÜ */
 .center{
     display:flex;
     justify-content:center;
@@ -45,7 +45,6 @@ body{
     padding:30px;
     border-radius:14px;
     transition:.3s;
-    box-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
 .logo img:hover{
     transform:scale(1.05);
@@ -56,7 +55,7 @@ body{
     display:flex;
     justify-content:center;
     gap:100px;
-    margin-bottom:200px; 
+    margin-bottom:250px; 
     position:relative;
     flex-wrap:nowrap; 
 }
@@ -96,15 +95,18 @@ body{
     white-space: nowrap;
     z-index: 20;
 }
+.title:hover{
+    color: orange;
+}
 
-/* LIST OVERLAY - AŞAĞI AÇILIR */
+/* LIST OVERLAY - AŞAĞI DOĞRU AÇILAN YAPI */
 .list{
     display:none;
     position:absolute;
     top: 100%; 
     left:50%;
     transform:translateX(-50%);
-    margin-top: 35px;
+    margin-top: 35px; 
     background:#111;
     padding:15px 20px;
     border-radius:10px;
@@ -146,8 +148,8 @@ body{
 }
 
 .contact-panel iframe{
-    width:100%;
-    height:250px;
+    width:100% !important;
+    height:250px !important;
     border:0;
     margin-top:10px;
     border-radius:6px;
@@ -210,13 +212,9 @@ body{
 
 <div class="contact-panel" id="contactPanel">
     <h3>İletişim</h3>
-    <p><b>Adres:</b><br>İskenderun Teknik Üniversitesi Kampüsü, 31200 İskenderun/Hatay</p>
+    <p><b>Adres:</b> İskenderun Teknik Üniversitesi (İSTE), Hatay</p>
     <p><b>Telefon:</b> 05xx xxx xx xx</p>
-    <p><b>E-posta:</b> info@bilgili.com</p>
-      <iframe 
-        src="https://www.google.com/maps?q=iskenderun+teknik+üniversitesi&output=embed"
-        loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.764536643261!2d36.18614537653457!3d36.58390738018337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f663484f4e151%3A0xc665191c96924e27!2zxLBza2VuZGVydW4gVGVrbmlrIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1715694851234!5m2!1str!2str" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <script>
@@ -228,4 +226,3 @@ function toggle(id){
 
 </body>
 </html>
-
