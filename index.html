@@ -57,35 +57,35 @@ body{
     gap:100px;
     margin-bottom:100px;
     position:relative;
-    flex-wrap:nowrap; /* mobilde de yan yana */
+    flex-wrap:nowrap; 
 }
 
 /* ITEM */
 .menu-item{
-    position:relative; /* liste bunun üstüne konacak */
+    position:relative; 
     text-align:center;
-    width: 300px; /* Görsel genişliği için */
+    width: 300px; 
 }
 
 /* GÖRSEL STİLİ */
 .menu-item img.item-img {
     width: 100%;
-    border: 4px solid white; /* Fotoğraftaki beyaz çerçeve */
+    border: 4px solid white; 
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .title{
     cursor:pointer;
-    font-size:22px; /* Boyut görseldeki etikete göre ayarlandı */
+    font-size:22px; 
     font-weight:bold;
     transition:.3s;
-    /* GÖRSELDEKİ BEYAZ ETİKET TASARIMI */
     position: absolute;
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    color: #b10000; /* Görseldeki kırmızı tonu */
+    color: #b10000; 
     padding: 5px 25px;
     border-radius: 8px;
     white-space: nowrap;
@@ -98,7 +98,7 @@ body{
 .list{
     display:none;
     position:absolute;
-    bottom:60px; /* Görselin üstünde açılması için yükseltildi */
+    bottom:60px; 
     left:50%;
     transform:translateX(-50%);
     background:#111;
@@ -145,29 +145,11 @@ body{
 
 /* MOBILE */
 @media(max-width:768px){
-
-    .logo img{
-        width:200px;
-    }
-
-    .menu{
-        gap:20px;
-    }
-
-    .menu-item {
-        width: 150px;
-    }
-
-    .title{
-        font-size:14px;
-        padding: 3px 10px;
-        bottom: -10px;
-    }
-
-    .contact-panel{
-        width:90%;
-        right:5%;
-    }
+    .logo img{ width:200px; }
+    .menu{ gap:20px; }
+    .menu-item { width: 150px; }
+    .title{ font-size:14px; padding: 3px 10px; bottom: -10px; }
+    .contact-panel{ width:90%; right:5%; }
 }
 </style>
 </head>
@@ -189,7 +171,7 @@ body{
 <div class="menu">
 
     <div class="menu-item">
-        <img src="katolog.png" class="item-img" onclick="toggle('pvcList')">
+        <img src="images/katolog.png" class="item-img" onclick="toggle('pvcList')">
         <div class="title" onclick="toggle('pvcList')">PVC</div>
         <div class="list" id="pvcList">
             <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">GrossTEC</a>
@@ -199,7 +181,7 @@ body{
     </div>
 
     <div class="menu-item">
-        <img src="730040.jpeg" class="item-img" onclick="toggle('aluList')">
+        <img src="images/730040.jpeg" class="item-img" onclick="toggle('aluList')">
         <div class="title" onclick="toggle('aluList')">ALÜMİNYUM</div>
         <div class="list" id="aluList">
             <a href="#">Alüminyum 1</a>
