@@ -30,7 +30,9 @@ body {
     color: black;
     padding: 8px 15px;
     border-radius: 5px;
+    transition: 0.3s;
 }
+.contact-btn:hover { background: orange; }
 
 /* LOGO */
 .center-logo {
@@ -53,7 +55,7 @@ body {
     justify-content: center;
     gap: 50px;
     padding: 40px 20px;
-    flex-wrap: wrap; /* Mobilde alt alta geçmesini sağlar */
+    flex-wrap: wrap; 
 }
 
 /* HER BİR ÖĞE KUTUSU */
@@ -61,11 +63,11 @@ body {
     position: relative; 
     width: 320px;
     text-align: center;
-    height: 200px; /* Kutunun yüksekliğini sabitledik, liste açılsa da bu kutu büyümez */
-    margin-bottom: 60px; /* Mobilde alt alta gelince aradaki mesafe */
+    height: 200px; /* Kutuyu sabitledik, altındakileri itmez */
+    margin-bottom: 60px;
 }
 
-/* GÖRSEL VE HOVER EFEKTİ (GERİ GELDİ) */
+/* GÖRSEL VE HAREKET EFEKTİ */
 .item-img {
     width: 100%;
     height: 100%;
@@ -73,14 +75,15 @@ body {
     border: 4px solid white;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Hareket efekti */
+    transition: transform 0.3s ease, border-color 0.3s;
 }
 
 .item-img:hover {
-    transform: scale(1.05); /* Üzerine gelince büyüme efekti */
+    transform: scale(1.05); /* Yaklaşınca büyüme efekti */
+    border-color: orange;
 }
 
-/* BEYAZ ETİKETLER - YAZILARIN KAYMASINI ENGELLER */
+/* BEYAZ ETİKETLER */
 .label-title {
     position: absolute;
     bottom: -15px;
@@ -91,24 +94,25 @@ body {
     padding: 8px 25px;
     font-weight: bold;
     border-radius: 8px;
-    z-index: 101; /* Listenin üstünde kalması için */
+    z-index: 101;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    white-space: nowrap;
 }
 
-/* LİSTE - GÖRSELİ VE DİĞER YAZILARI ASLA KAYDIRMAZ */
+/* LİSTE - GÖRSELİ KAYDIRMAZ */
 .dropdown-list {
     display: none;
     position: absolute; 
-    top: 105%; /* Görselin hemen altından başlar */
+    top: 110%; 
     left: 0;
     width: 100%;
-    background: rgba(17, 17, 17, 0.98); /* Hafif şeffaf siyah */
+    background: #111;
     border: 1px solid #444;
     border-radius: 8px;
     padding: 10px 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    z-index: 100; /* Katman önceliği */
+    z-index: 100;
     max-height: 250px;
     overflow-y: auto;
 }
@@ -122,11 +126,7 @@ body {
     font-size: 15px;
     text-align: left;
 }
-
-.dropdown-list a:hover {
-    background: #333;
-    color: orange;
-}
+.dropdown-list a:hover { background: #333; color: orange; }
 
 /* İLETİŞİM PANELİ */
 .contact-panel {
@@ -136,23 +136,19 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
     background: #111;
     padding: 25px;
     border-radius: 15px;
     z-index: 2000;
     border: 1px solid white;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
 }
 
 /* MOBİL ÖZEL AYARLAR */
 @media (max-width: 768px) {
-    .menu-container {
-        gap: 80px; /* Mobilde dikeydeki kutu aralıklarını açtık */
-    }
-    .menu-item {
-        width: 100%;
-        max-width: 280px;
-    }
+    .menu-container { gap: 80px; }
+    .menu-item { width: 100%; max-width: 280px; }
 }
 </style>
 </head>
@@ -169,7 +165,6 @@ body {
 </div>
 
 <div class="menu-container">
-
     <div class="menu-item">
         <img src="images/pvc.jpeg" class="item-img" onclick="toggle('pvcList')" alt="PVC">
         <div class="label-title" onclick="toggle('pvcList')">PVC</div>
@@ -197,14 +192,15 @@ body {
             <a href="#">Alüminyum Örnek 2</a>
         </div>
     </div>
-
 </div>
 
 <div class="contact-panel" id="contactPanel">
     <div style="text-align: right;"><b onclick="toggle('contactPanel')" style="cursor:pointer; color:red;">KAPAT [X]</b></div>
-    <h3>İletişim Bilgileri</h3>
-    <p><b>Adres:</b> İskenderun Teknik Üniversitesi, Hatay</p>
-    <iframe src="http://googleusercontent.com/maps.google.com/9" style="width:100%; height:200px; border:0; border-radius:8px;"></iframe>
+    <h3 style="margin-top:0;">İletişim Bilgileri</h3>
+    <p><b>Adres:</b> İskenderun Teknik Üniversitesi, 31200 İskenderun/Hatay</p>
+    
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3202.483103442654!2d36.188720376249!3d36.58223637232235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f58257007797d%3A0xe549320b5f54313d!2zxLBza2VuZGVydW4gVGVrbmlrIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1700000000000" 
+        width="100%" height="250" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <script>
@@ -212,7 +208,6 @@ function toggle(id) {
     const el = document.getElementById(id);
     const isVisible = el.style.display === "block";
     
-    // Açık olan listeleri kapat (Birbirine binmesin)
     if(id !== 'contactPanel') {
         document.querySelectorAll('.dropdown-list').forEach(list => list.style.display = 'none');
     }
