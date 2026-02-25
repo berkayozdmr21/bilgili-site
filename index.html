@@ -47,31 +47,40 @@ body {
     border-radius: 12px;
 }
 
-/* MENÜ - MOBİLDE ALT ALTA AMA GÖRSELLERİ KAYDIRMAZ */
+/* MENÜ KONTEYNER */
 .menu-container {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    padding: 20px;
-    flex-wrap: wrap; /* Mobilde otomatik alt alta geçer */
+    gap: 50px;
+    padding: 40px 20px;
+    flex-wrap: wrap; /* Mobilde alt alta geçmesini sağlar */
 }
 
+/* HER BİR ÖĞE KUTUSU */
 .menu-item {
-    position: relative; /* İçindeki listeyi buna göre hizalar */
-    width: 300px;
+    position: relative; 
+    width: 320px;
     text-align: center;
-    margin-bottom: 40px; /* Mobilde alt alta gelince aradaki boşluk */
+    height: 200px; /* Kutunun yüksekliğini sabitledik, liste açılsa da bu kutu büyümez */
+    margin-bottom: 60px; /* Mobilde alt alta gelince aradaki mesafe */
 }
 
+/* GÖRSEL VE HOVER EFEKTİ (GERİ GELDİ) */
 .item-img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
-    border: 3px solid white;
+    border: 4px solid white;
     border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.3s ease; /* Hareket efekti */
 }
 
+.item-img:hover {
+    transform: scale(1.05); /* Üzerine gelince büyüme efekti */
+}
+
+/* BEYAZ ETİKETLER - YAZILARIN KAYMASINI ENGELLER */
 .label-title {
     position: absolute;
     bottom: -15px;
@@ -79,28 +88,28 @@ body {
     transform: translateX(-50%);
     background: white;
     color: #b10000;
-    padding: 5px 20px;
+    padding: 8px 25px;
     font-weight: bold;
     border-radius: 8px;
-    z-index: 100; /* Yazı hep en üstte */
+    z-index: 101; /* Listenin üstünde kalması için */
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* LİSTE - GÖRSELİ KAYDIRMADAN AŞAĞIYA AÇILAN SABİT KATMAN */
+/* LİSTE - GÖRSELİ VE DİĞER YAZILARI ASLA KAYDIRMAZ */
 .dropdown-list {
     display: none;
-    position: absolute; /* GÖRSELİ AŞAĞI İTMESİNİ ENGELLER */
-    top: 100%; /* Görselin tam altından başlar */
+    position: absolute; 
+    top: 105%; /* Görselin hemen altından başlar */
     left: 0;
     width: 100%;
-    background: #111;
+    background: rgba(17, 17, 17, 0.98); /* Hafif şeffaf siyah */
     border: 1px solid #444;
-    border-radius: 0 0 10px 10px;
-    margin-top: 10px;
-    padding: 5px 0;
+    border-radius: 8px;
+    padding: 10px 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    z-index: 999; /* Diğer her şeyin önünde görünür */
-    max-height: 300px;
+    z-index: 100; /* Katman önceliği */
+    max-height: 250px;
     overflow-y: auto;
 }
 
@@ -110,12 +119,12 @@ body {
     text-decoration: none;
     padding: 12px 15px;
     border-bottom: 1px solid #222;
-    font-size: 14px;
+    font-size: 15px;
     text-align: left;
 }
 
 .dropdown-list a:hover {
-    background: #222;
+    background: #333;
     color: orange;
 }
 
@@ -129,30 +138,20 @@ body {
     width: 90%;
     max-width: 400px;
     background: #111;
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
     z-index: 2000;
     border: 1px solid white;
 }
 
-.contact-panel iframe {
-    width: 100%;
-    height: 200px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* MOBİL ÖZEL DOKUNUŞLAR */
+/* MOBİL ÖZEL AYARLAR */
 @media (max-width: 768px) {
     .menu-container {
-        gap: 60px; /* Mobilde alt alta duran kutuların arası */
+        gap: 80px; /* Mobilde dikeydeki kutu aralıklarını açtık */
     }
     .menu-item {
-        width: 100%; /* Mobilde tam genişlik */
-        max-width: 320px;
-    }
-    .dropdown-list {
-        width: 100%; /* Listenin genişliği görselle aynı kalır */
+        width: 100%;
+        max-width: 280px;
     }
 }
 </style>
@@ -203,9 +202,9 @@ body {
 
 <div class="contact-panel" id="contactPanel">
     <div style="text-align: right;"><b onclick="toggle('contactPanel')" style="cursor:pointer; color:red;">KAPAT [X]</b></div>
-    <h3 style="margin-top:0;">İletişim</h3>
-    <p>Adres: İskenderun Teknik Üniversitesi, Hatay</p>
-    <iframe src="YOUT_MAP_LINK_HERE" loading="lazy"></iframe>
+    <h3>İletişim Bilgileri</h3>
+    <p><b>Adres:</b> İskenderun Teknik Üniversitesi, Hatay</p>
+    <iframe src="http://googleusercontent.com/maps.google.com/9" style="width:100%; height:200px; border:0; border-radius:8px;"></iframe>
 </div>
 
 <script>
@@ -213,7 +212,7 @@ function toggle(id) {
     const el = document.getElementById(id);
     const isVisible = el.style.display === "block";
     
-    // Açık olan DİĞER listeleri kapat (Birbirine binmemesi için önemli)
+    // Açık olan listeleri kapat (Birbirine binmesin)
     if(id !== 'contactPanel') {
         document.querySelectorAll('.dropdown-list').forEach(list => list.style.display = 'none');
     }
