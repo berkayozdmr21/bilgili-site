@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bilgili</title>
+<title>Bilgili - Responsive</title>
 
 <style>
 body{
@@ -11,108 +11,104 @@ body{
     background:black;
     color:white;
     font-family:Arial, sans-serif;
-    overflow-x:hidden;
+    overflow-x:hidden; /* Yatay kaydırmayı engeller */
 }
 
 /* HEADER */
 .header{
     display:flex;
     justify-content:flex-end;
-    padding:25px 35px;
+    padding:20px;
 }
 
 .contact-btn{
     cursor:pointer;
     font-weight:bold;
-    font-size:18px;
+    font-size: clamp(14px, 4vw, 18px); /* Ekrana göre boyut değişir */
     transition:.3s;
 }
-.contact-btn:hover{
-    color:orange;
-}
+.contact-btn:hover{ color:orange; }
 
-/* CENTER - LOGO BÜYÜTÜLDÜ */
+/* CENTER - LOGO AYARI */
 .center{
     display:flex;
     justify-content:center;
     align-items:center;
-    height:50vh;
+    padding: 40px 10px;
+    min-height: 40vh;
 }
 
 .logo img{
-    width:450px; 
+    width: 100%;
+    max-width: 450px; /* PC'de maksimum bu kadar büyür */
+    height: auto;
     background:white;
-    padding:30px;
+    padding:20px;
     border-radius:14px;
-    transition:.3s;
-}
-.logo img:hover{
-    transform:scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
-/* MENU */
+/* MENU DÜZENİ */
 .menu{
     display:flex;
     justify-content:center;
-    gap:100px;
-    margin-bottom:250px; 
-    position:relative;
-    flex-wrap:nowrap; 
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 300px; 
+    padding: 0 20px;
+    flex-wrap: wrap; /* Mobilde alt alta geçmesini sağlar */
 }
 
 /* ITEM */
 .menu-item{
     position:relative; 
     text-align:center;
-    width: 320px; 
+    flex: 1;
+    min-width: 280px; /* Kartların çok küçülmesini engeller */
+    max-width: 320px;
 }
 
-/* GÖRSEL STİLİ */
 .menu-item img.item-img {
     width: 100%;
-    min-height: 180px;
+    aspect-ratio: 16/9; /* Oranları korur */
     background: #222;
     border: 4px solid white; 
     border-radius: 8px;
     cursor: pointer;
-    display: block;
     object-fit: cover;
 }
 
 .title{
     cursor:pointer;
-    font-size:24px; 
+    font-size: 22px;
     font-weight:bold;
-    transition:.3s;
     position: absolute;
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     background: white;
     color: #b10000; 
-    padding: 8px 30px;
+    padding: 8px 25px;
     border-radius: 8px;
     white-space: nowrap;
     z-index: 20;
-}
-.title:hover{
-    color: orange;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* LIST OVERLAY - AŞAĞI DOĞRU AÇILAN YAPI */
+/* LIST OVERLAY - AŞAĞI AÇILIR */
 .list{
     display:none;
     position:absolute;
     top: 100%; 
     left:50%;
     transform:translateX(-50%);
-    margin-top: 35px; 
+    margin-top: 35px;
     background:#111;
-    padding:15px 20px;
+    padding:15px;
     border-radius:10px;
     box-shadow:0 15px 35px rgba(0,0,0,0.9);
-    min-width:300px;
-    max-height: 400px;
+    width: 100%;
+    max-height: 350px;
     overflow-y: auto;
     z-index: 1000;
     border: 1px solid #333;
@@ -122,46 +118,42 @@ body{
     display:block;
     color:white;
     text-decoration:none;
-    margin:10px 0;
-    font-size:16px;
-    transition:.3s;
-    text-align: left;
+    padding: 10px;
+    font-size:15px;
     border-bottom: 1px solid #222;
-    padding-bottom: 5px;
+    text-align: left;
 }
-.list a:hover{
-    color:orange;
-}
+.list a:hover{ background: #222; color: orange; }
 
 /* CONTACT PANEL */
 .contact-panel{
     display:none;
     position:fixed;
-    top:70px;
-    right:30px;
-    width:400px;
+    top: 80px;
+    right: 20px;
+    width: calc(100% - 40px); /* Mobilde tam genişlik */
+    max-width: 400px; /* PC'de sabit genişlik */
     background:#111;
     padding:20px;
     border-radius:10px;
-    box-shadow:0 0 20px rgba(0,0,0,.7);
-    z-index:1001;
+    box-shadow:0 0 30px rgba(0,0,0,0.8);
+    z-index: 2000;
 }
 
 .contact-panel iframe{
-    width:100% !important;
-    height:250px !important;
+    width:100%;
+    height: 250px;
     border:0;
-    margin-top:10px;
     border-radius:6px;
+    margin-top: 15px;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-    .logo img{ width:280px; }
-    .menu{ gap:20px; }
-    .menu-item { width: 160px; }
-    .title{ font-size:14px; padding: 4px 12px; bottom: -12px; }
-    .contact-panel{ width:90%; right:5%; }
+/* RESPONSIVE DOKUNUŞLAR (EKRAN KÜÇÜLDÜĞÜNDE) */
+@media(max-width: 768px){
+    .logo img { max-width: 280px; padding: 15px; }
+    .menu { gap: 80px; } /* Mobilde alt alta binince aradaki boşluk */
+    .center { min-height: 30vh; }
+    .contact-panel { right: 50%; transform: translateX(50%); } /* Mobilde ortala */
 }
 </style>
 </head>
@@ -179,7 +171,6 @@ body{
 </div>
 
 <div class="menu">
-
     <div class="menu-item">
         <img src="images/pvc.jpeg" class="item-img" onclick="toggle('pvcList')" alt="PVC">
         <div class="title" onclick="toggle('pvcList')">PVC</div>
@@ -207,20 +198,32 @@ body{
             <a href="#">Alüminyum 2</a>
         </div>
     </div>
-
 </div>
 
 <div class="contact-panel" id="contactPanel">
-    <h3>İletişim</h3>
+    <div style="display:flex; justify-content:space-between;">
+        <h3>İletişim</h3>
+        <span onclick="toggle('contactPanel')" style="cursor:pointer; color:red; font-weight:bold;">X</span>
+    </div>
     <p><b>Adres:</b> İskenderun Teknik Üniversitesi (İSTE), Hatay</p>
     <p><b>Telefon:</b> 05xx xxx xx xx</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.764536643261!2d36.18614537653457!3d36.58390738018337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f663484f4e151%3A0xc665191c96924e27!2zxLBza2VuZGVydW4gVGVrbmlrIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1715694851234!5m2!1str!2str" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="http://googleusercontent.com/maps.google.com/8" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 <script>
 function toggle(id){
     const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
+    const display = window.getComputedStyle(el).display;
+    
+    // Açarken diğer her şeyi kapat (isteğe bağlı ama mobilde daha temiz olur)
+    if(display === "none"){
+        if(id !== "contactPanel") {
+             document.querySelectorAll('.list').forEach(l => l.style.display = 'none');
+        }
+        el.style.display = "block";
+    } else {
+        el.style.display = "none";
+    }
 }
 </script>
 
