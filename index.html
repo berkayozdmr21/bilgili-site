@@ -70,12 +70,13 @@ body{
 /* GÖRSEL STİLİ */
 .menu-item img.item-img {
     width: 100%;
-    height: 180px; /* Sabit yükseklik verildi ki kutu boş kalmasın */
-    object-fit: cover;
+    min-height: 150px; /* Görsel yüklenmezse alan boş kalmasın */
+    background: #222; /* Yüklenene kadar koyu gri görünsün */
     border: 4px solid white; 
     border-radius: 8px;
     cursor: pointer;
     display: block;
+    object-fit: cover;
 }
 
 .title{
@@ -98,7 +99,7 @@ body{
     color: orange;
 }
 
-/* LIST OVERLAY - PVC LİSTESİ UZUN OLDUĞU İÇİN MAX-HEIGHT EKLENDİ */
+/* LIST OVERLAY */
 .list{
     display:none;
     position:absolute;
@@ -109,11 +110,10 @@ body{
     padding:15px 20px;
     border-radius:10px;
     box-shadow:0 0 20px rgba(0,0,0,.6);
-    min-width:250px;
-    max-height: 400px; /* Liste çok uzunsa kaydırılabilir olsun */
+    min-width:280px;
+    max-height: 350px;
     overflow-y: auto;
     z-index: 999;
-    border: 1px solid #333;
 }
 
 .list a{
@@ -125,11 +125,9 @@ body{
     transition:.3s;
     text-align: left;
     border-bottom: 1px solid #222;
-    padding-bottom: 4px;
 }
 .list a:hover{
     color:orange;
-    padding-left: 5px;
 }
 
 /* CONTACT PANEL */
@@ -146,22 +144,12 @@ body{
     z-index:1000;
 }
 
-.contact-panel iframe{
-    width:100%;
-    height:220px;
-    border:0;
-    margin-top:10px;
-    border-radius:6px;
-}
-
 /* MOBILE */
 @media(max-width:768px){
-    .logo img{ width:200px; }
+    .logo img{ width:180px; }
     .menu{ gap:20px; }
-    .menu-item { width: 160px; }
-    .menu-item img.item-img { height: 100px; }
+    .menu-item { width: 150px; }
     .title{ font-size:14px; padding: 3px 10px; bottom: -10px; }
-    .contact-panel{ width:90%; right:5%; }
 }
 </style>
 </head>
@@ -169,9 +157,7 @@ body{
 <body>
 
 <div class="header">
-    <div class="contact-btn" onclick="toggle('contactPanel')">
-        İLETİŞİM
-    </div>
+    <div class="contact-btn" onclick="toggle('contactPanel')">İLETİŞİM</div>
 </div>
 
 <div class="center">
@@ -214,12 +200,9 @@ body{
 
 <div class="contact-panel" id="contactPanel">
     <h3>İletişim</h3>
-    <p><b>Adres:</b><br>
-    İskenderun Teknik Üniversitesi<br>
-    Hatay</p>
+    <p><b>Adres:</b><br>İskenderun Teknik Üniversitesi / Hatay</p>
     <p><b>Telefon:</b> 05xx xxx xx xx</p>
     <p><b>E-posta:</b> info@bilgili.com</p>
-    <iframe src="https://www.google.com/maps?q=iskenderun+teknik+üniversitesi&output=embed"></iframe>
 </div>
 
 <script>
