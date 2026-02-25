@@ -57,47 +57,40 @@ body{
     gap:100px;
     margin-bottom:100px;
     position:relative;
-    flex-wrap:nowrap; 
+    flex-wrap:nowrap; /* mobilde de yan yana */
 }
 
-/* ITEM - GÖRSEL MANTIĞI BURADA */
+/* ITEM */
 .menu-item{
-    position:relative; 
+    position:relative; /* liste bunun üstüne konacak */
     text-align:center;
-    width: 300px; /* Görsel genişliği */
-    cursor:pointer;
+    width: 300px; /* Görsel genişliği için */
 }
 
-/* FOTOĞRAFTAKİ BEYAZ ÇERÇEVE VE GÖRSEL */
-.menu-item img.main-img {
+/* GÖRSEL STİLİ */
+.menu-item img.item-img {
     width: 100%;
-    border: 4px solid white;
-    border-radius: 10px;
-    transition: .3s;
+    border: 4px solid white; /* Fotoğraftaki beyaz çerçeve */
+    border-radius: 8px;
 }
 
-/* FOTOĞRAFTAKİ BEYAZ ETİKET MANTIĞI */
-.title {
+.title{
+    cursor:pointer;
+    font-size:22px; /* Boyut görseldeki etikete göre ayarlandı */
+    font-weight:bold;
+    transition:.3s;
+    /* GÖRSELDEKİ BEYAZ ETİKET TASARIMI */
     position: absolute;
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    color: #cc0000; /* Kırmızı tonu */
+    color: #b10000; /* Görseldeki kırmızı tonu */
     padding: 5px 25px;
-    font-size: 20px;
-    font-weight: bold;
     border-radius: 8px;
     white-space: nowrap;
-    transition: .3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
-
-.menu-item:hover img.main-img {
-    transform: scale(1.02);
-}
-
-.menu-item:hover .title {
+.title:hover{
     color: orange;
 }
 
@@ -105,7 +98,7 @@ body{
 .list{
     display:none;
     position:absolute;
-    bottom:60px; /* Görselin üstünde açılsın */
+    bottom:60px; /* Görselin üstünde açılması için yükseltildi */
     left:50%;
     transform:translateX(-50%);
     background:#111;
@@ -152,11 +145,29 @@ body{
 
 /* MOBILE */
 @media(max-width:768px){
-    .logo img{ width:200px; }
-    .menu{ gap:20px; }
-    .menu-item { width: 160px; }
-    .title{ font-size:14px; padding: 3px 10px; bottom: -10px; }
-    .contact-panel{ width:90%; right:5%; }
+
+    .logo img{
+        width:200px;
+    }
+
+    .menu{
+        gap:20px;
+    }
+
+    .menu-item {
+        width: 150px;
+    }
+
+    .title{
+        font-size:14px;
+        padding: 3px 10px;
+        bottom: -10px;
+    }
+
+    .contact-panel{
+        width:90%;
+        right:5%;
+    }
 }
 </style>
 </head>
@@ -177,9 +188,9 @@ body{
 
 <div class="menu">
 
-    <div class="menu-item" onclick="toggle('pvcList')">
-        <img src="katolog.png" class="main-img" alt="PVC">
-        <div class="title">PVC</div>
+    <div class="menu-item">
+        <img src="katolog.png" class="item-img" onclick="toggle('pvcList')">
+        <div class="title" onclick="toggle('pvcList')">PVC</div>
         <div class="list" id="pvcList">
             <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">GrossTEC</a>
             <a href="https://tecnoplas.com.tr/tr/megatec-serisi-tr" target="_blank">MegaTEC</a>
@@ -187,9 +198,9 @@ body{
         </div>
     </div>
 
-    <div class="menu-item" onclick="toggle('aluList')">
-        <img src="730040.jpeg" class="main-img" alt="Alüminyum">
-        <div class="title">ALÜMİNYUM</div>
+    <div class="menu-item">
+        <img src="730040.jpeg" class="item-img" onclick="toggle('aluList')">
+        <div class="title" onclick="toggle('aluList')">ALÜMİNYUM</div>
         <div class="list" id="aluList">
             <a href="#">Alüminyum 1</a>
             <a href="#">Alüminyum 2</a>
