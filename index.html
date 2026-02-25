@@ -55,7 +55,7 @@ body{
     display:flex;
     justify-content:center;
     gap:100px;
-    margin-bottom:100px;
+    margin-bottom: 200px; /* Aşağı açılan liste için boşluk artırıldı */
     position:relative;
     flex-wrap:nowrap; 
 }
@@ -70,8 +70,8 @@ body{
 /* GÖRSEL STİLİ */
 .menu-item img.item-img {
     width: 100%;
-    min-height: 150px; /* Görsel yüklenmezse alan boş kalmasın */
-    background: #222; /* Yüklenene kadar koyu gri görünsün */
+    min-height: 150px;
+    background: #222;
     border: 4px solid white; 
     border-radius: 8px;
     cursor: pointer;
@@ -85,7 +85,8 @@ body{
     font-weight:bold;
     transition:.3s;
     position: absolute;
-    bottom: -15px;
+    /* Yazı görselin biraz üzerinde kalsın, liste altından başlasın */
+    bottom: -15px; 
     left: 50%;
     transform: translateX(-50%);
     background: white;
@@ -99,21 +100,23 @@ body{
     color: orange;
 }
 
-/* LIST OVERLAY */
+/* LIST OVERLAY - AŞAĞI DOĞRU AÇILACAK ŞEKİLDE DÜZENLENDİ */
 .list{
     display:none;
     position:absolute;
-    bottom:60px; 
+    top: 100%; /* Kartın hemen altından başla */
+    margin-top: 25px; /* Yazı etiketiyle çakışmaması için boşluk */
     left:50%;
     transform:translateX(-50%);
     background:#111;
     padding:15px 20px;
     border-radius:10px;
-    box-shadow:0 0 20px rgba(0,0,0,.6);
+    box-shadow:0 10px 25px rgba(0,0,0,0.8);
     min-width:280px;
     max-height: 350px;
     overflow-y: auto;
     z-index: 999;
+    border: 1px solid #333;
 }
 
 .list a{
@@ -125,6 +128,7 @@ body{
     transition:.3s;
     text-align: left;
     border-bottom: 1px solid #222;
+    padding: 5px 0;
 }
 .list a:hover{
     color:orange;
@@ -150,6 +154,7 @@ body{
     .menu{ gap:20px; }
     .menu-item { width: 150px; }
     .title{ font-size:14px; padding: 3px 10px; bottom: -10px; }
+    .list { min-width: 180px; }
 }
 </style>
 </head>
@@ -214,4 +219,3 @@ function toggle(id){
 
 </body>
 </html>
-
