@@ -3,178 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bilgili - Responsive</title>
+<title>Bilgili İnşaat & Alüminyum</title>
 
 <style>
-body{
-    margin:0;
-    background:black;
-    color:white;
-    font-family:Arial, sans-serif;
-    overflow-x:hidden; /* Yatay kaydırmayı engeller */
+/* GENEL AYARLAR */
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 
-/* HEADER */
-.header{
-    display:flex;
-    justify-content:flex-end;
-    padding:20px;
+/* HEADER & İLETİŞİM BUTONU */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px;
 }
 
-.contact-btn{
-    cursor:pointer;
-    font-weight:bold;
-    font-size: clamp(14px, 4vw, 18px); /* Ekrana göre boyut değişir */
-    transition:.3s;
-}
-.contact-btn:hover{ color:orange; }
-
-/* CENTER - LOGO AYARI */
-.center{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding: 40px 10px;
-    min-height: 40vh;
+.contact-btn {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    background: white;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
-.logo img{
-    width: 100%;
-    max-width: 450px; /* PC'de maksimum bu kadar büyür */
+/* LOGO ALANI */
+.center-logo {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.logo img {
+    width: 90%;
+    max-width: 450px; /* PC Boyutu */
     height: auto;
-    background:white;
-    padding:20px;
-    border-radius:14px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
 }
 
-/* MENU DÜZENİ */
-.menu{
-    display:flex;
-    justify-content:center;
+/* MENÜ YAPISI */
+.menu-container {
+    display: flex;
+    flex-direction: row; /* PC'de yan yana */
+    justify-content: center;
     align-items: flex-start;
     gap: 40px;
-    margin-bottom: 300px; 
-    padding: 0 20px;
-    flex-wrap: wrap; /* Mobilde alt alta geçmesini sağlar */
+    padding: 20px;
+    margin-bottom: 100px;
 }
 
-/* ITEM */
-.menu-item{
-    position:relative; 
-    text-align:center;
-    flex: 1;
-    min-width: 280px; /* Kartların çok küçülmesini engeller */
-    max-width: 320px;
+/* HER BİR KUTU (PVC / ALÜMİNYUM) */
+.menu-item {
+    position: relative;
+    width: 300px;
+    text-align: center;
 }
 
-.menu-item img.item-img {
+.item-img {
     width: 100%;
-    aspect-ratio: 16/9; /* Oranları korur */
-    background: #222;
-    border: 4px solid white; 
-    border-radius: 8px;
-    cursor: pointer;
+    height: 200px;
     object-fit: cover;
+    border: 3px solid white;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.title{
-    cursor:pointer;
-    font-size: 22px;
-    font-weight:bold;
+.label-title {
     position: absolute;
-    bottom: -20px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    color: #b10000; 
-    padding: 8px 25px;
+    color: #b10000;
+    padding: 5px 20px;
+    font-weight: bold;
     border-radius: 8px;
     white-space: nowrap;
-    z-index: 20;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10;
 }
 
-/* LIST OVERLAY - AŞAĞI AÇILIR */
-.list{
-    display:none;
-    position:absolute;
-    top: 100%; 
-    left:50%;
-    transform:translateX(-50%);
-    margin-top: 35px;
-    background:#111;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.9);
-    width: 100%;
-    max-height: 350px;
-    overflow-y: auto;
-    z-index: 1000;
+/* LİSTE TASARIMI - MOBİL UYUMLU */
+.dropdown-list {
+    display: none;
+    background: #111;
     border: 1px solid #333;
+    border-radius: 8px;
+    margin-top: 25px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.list a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding: 10px;
-    font-size:15px;
+.dropdown-list a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
     border-bottom: 1px solid #222;
+    font-size: 15px;
     text-align: left;
 }
-.list a:hover{ background: #222; color: orange; }
 
-/* CONTACT PANEL */
-.contact-panel{
-    display:none;
-    position:fixed;
-    top: 80px;
-    right: 20px;
-    width: calc(100% - 40px); /* Mobilde tam genişlik */
-    max-width: 400px; /* PC'de sabit genişlik */
-    background:#111;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 30px rgba(0,0,0,0.8);
+.dropdown-list a:last-child { border-bottom: none; }
+.dropdown-list a:hover { color: orange; background: #222; }
+
+/* İLETİŞİM PANELİ */
+.contact-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
     z-index: 2000;
+    border: 1px solid white;
 }
 
-.contact-panel iframe{
-    width:100%;
-    height: 250px;
-    border:0;
-    border-radius:6px;
-    margin-top: 15px;
+.contact-panel iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
-/* RESPONSIVE DOKUNUŞLAR (EKRAN KÜÇÜLDÜĞÜNDE) */
-@media(max-width: 768px){
-    .logo img { max-width: 280px; padding: 15px; }
-    .menu { gap: 80px; } /* Mobilde alt alta binince aradaki boşluk */
-    .center { min-height: 30vh; }
-    .contact-panel { right: 50%; transform: translateX(50%); } /* Mobilde ortala */
+/* MOBİL ÖZEL AYARLAR (RESPONSIVE) */
+@media (max-width: 768px) {
+    .menu-container {
+        flex-direction: column; /* Mobilde alt alta */
+        align-items: center;
+        gap: 80px; /* Aradaki boşluk */
+    }
+
+    .menu-item {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .logo img {
+        max-width: 300px; /* Mobilde logo küçülsün */
+    }
+
+    .dropdown-list {
+        position: relative; /* Üst üste binmeyi engeller */
+        left: 0;
+        transform: none;
+        width: 100%;
+    }
 }
 </style>
 </head>
-
 <body>
 
 <div class="header">
     <div class="contact-btn" onclick="toggle('contactPanel')">İLETİŞİM</div>
 </div>
 
-<div class="center">
+<div class="center-logo">
     <div class="logo">
         <img src="images/logo.png" alt="Bilgili Logo">
     </div>
 </div>
 
-<div class="menu">
+<div class="menu-container">
+
     <div class="menu-item">
         <img src="images/pvc.jpeg" class="item-img" onclick="toggle('pvcList')" alt="PVC">
-        <div class="title" onclick="toggle('pvcList')">PVC</div>
-        <div class="list" id="pvcList">
+        <div class="label-title" onclick="toggle('pvcList')">PVC</div>
+        <div class="dropdown-list" id="pvcList">
             <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">⭐ GrossTEC Serisi</a>
             <a href="https://tecnoplas.com.tr/tr/megatec-serisi-tr" target="_blank">MegaTEC Serisi</a>
             <a href="https://tecnoplas.com.tr/tr/supertec-serisi-tr" target="_blank">SuperTEC Serisi</a>
@@ -192,38 +200,34 @@ body{
 
     <div class="menu-item">
         <img src="images/730040.jpeg" class="item-img" onclick="toggle('aluList')" alt="Alüminyum">
-        <div class="title" onclick="toggle('aluList')">ALÜMİNYUM</div>
-        <div class="list" id="aluList">
-            <a href="#">Alüminyum 1</a>
-            <a href="#">Alüminyum 2</a>
+        <div class="label-title" onclick="toggle('aluList')">ALÜMİNYUM</div>
+        <div class="dropdown-list" id="aluList">
+            <a href="#">Alüminyum Örnek 1</a>
+            <a href="#">Alüminyum Örnek 2</a>
         </div>
     </div>
+
 </div>
 
 <div class="contact-panel" id="contactPanel">
-    <div style="display:flex; justify-content:space-between;">
-        <h3>İletişim</h3>
-        <span onclick="toggle('contactPanel')" style="cursor:pointer; color:red; font-weight:bold;">X</span>
-    </div>
-    <p><b>Adres:</b> İskenderun Teknik Üniversitesi (İSTE), Hatay</p>
-    <p><b>Telefon:</b> 05xx xxx xx xx</p>
-    <iframe src="http://googleusercontent.com/maps.google.com/8" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div style="text-align: right;"><b onclick="toggle('contactPanel')" style="cursor:pointer; color:red;">KAPAT [X]</b></div>
+    <h3 style="margin-top:0;">İletişim Bilgileri</h3>
+    <p><b>Adres:</b> İskenderun Teknik Üniversitesi, Hatay</p>
+    <p><b>Tel:</b> 05xx xxx xx xx</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.608307436034!2d36.188720!3d36.582236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDM0JzU2LjAiTiAzNsKwMTEnMTkuNCJF!5e0!3m2!1str!2str!4v1620000000000" loading="lazy"></iframe>
 </div>
 
 <script>
-function toggle(id){
+function toggle(id) {
     const el = document.getElementById(id);
-    const display = window.getComputedStyle(el).display;
+    const isVisible = el.style.display === "block";
     
-    // Açarken diğer her şeyi kapat (isteğe bağlı ama mobilde daha temiz olur)
-    if(display === "none"){
-        if(id !== "contactPanel") {
-             document.querySelectorAll('.list').forEach(l => l.style.display = 'none');
-        }
-        el.style.display = "block";
-    } else {
-        el.style.display = "none";
+    // Açık olan listeleri kapat
+    if(id !== 'contactPanel') {
+        document.querySelectorAll('.dropdown-list').forEach(list => list.style.display = 'none');
     }
+
+    el.style.display = isVisible ? "none" : "block";
 }
 </script>
 
