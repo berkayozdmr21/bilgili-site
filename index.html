@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bilgili İnşaat & Alüminyum</title>
- 
+
 <style>
 body {
     margin: 0;
@@ -127,7 +127,55 @@ body {
 }
 .dropdown-list a:hover { background: #222; color: #f39c12; }
 
-/* İLETİŞİM PANELİ VE HARİTA */
+/* KATALOG BUTON STİLİ */
+.katalog-ust-btn {
+    display: block;
+    background: #b10000;
+    color: white !important;
+    padding: 12px;
+    margin: 5px 10px 10px 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.katalog-ust-btn:hover {
+    background: #f39c12;
+    color: white !important;
+}
+
+/* SANAL SAYFA (MODAL) ARKA PLAN */
+.book-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+}
+
+/* KİTAP İÇERİĞİ KUTUSU */
+.book-modal-content {
+    position: relative;
+    width: 95%;
+    height: 90vh;
+    margin: 2vh auto;
+}
+
+/* KAPAT BUTONU */
+.book-close {
+    position: absolute;
+    top: -35px; right: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* İLETİŞİM PANELİ */
 .contact-panel {
     display: none;
     position: fixed;
@@ -144,14 +192,12 @@ body {
     box-shadow: 0 0 40px rgba(0,0,0,1);
 }
 
-/* MOBİL AYARLAR */
 @media (max-width: 768px) {
     .menu-container { gap: 80px; }
     .menu-item { width: 100%; max-width: 290px; }
 }
-.pvc-img{
-    transform: scale(1.15);
-}
+
+.pvc-img{ transform: scale(1.15); }
     
 </style>
 </head>
@@ -172,6 +218,8 @@ body {
         <img src="images/deneme1.png" class="item-img pvc-img" onclick="toggle('pvcList')" alt="PVC">
         <div class="label-title" onclick="toggle('pvcList')">PVC</div>
         <div class="dropdown-list" id="pvcList">
+            <a href="javascript:void(0)" class="katalog-ust-btn" onclick="openBook()">📖 KATALOĞU GÖRÜNTÜLE</a>
+            
             <a href="https://tecnoplas.com.tr/tr/grosstec-serisi-tr" target="_blank">⭐ GrossTEC Serisi</a>
             <a href="https://tecnoplas.com.tr/tr/megatec-serisi-tr" target="_blank">MegaTEC Serisi</a>
             <a href="https://tecnoplas.com.tr/tr/supertec-serisi-tr" target="_blank">SuperTEC Serisi</a>
@@ -190,6 +238,8 @@ body {
         <img src="images/730040.jpeg" class="item-img" onclick="toggle('aluList')" alt="Alüminyum">
         <div class="label-title" onclick="toggle('aluList')">ALÜMİNYUM</div>
         <div class="dropdown-list" id="aluList">
+            <a href="javascript:void(0)" class="katalog-ust-btn" onclick="openBook()">📖 KATALOĞU GÖRÜNTÜLE</a>
+            
             <a href="#">Alüminyum Sistem 1</a>
             <a href="#">Alüminyum Sistem 2</a>
         </div>
@@ -202,28 +252,44 @@ body {
     <p><b>Adres:</b> İskenderun Teknik Üniversitesi (İSTE), Merkez Kampüs, Meydan, 31200 İskenderun/Hatay</p>
     <p><b>Telefon:</b> +90 326 310 10 10</p>
     
- <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.071661332454!2d36.16611231529125!3d36.58410098000497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152ef6e76d45ad8b%3A0xf98a91f01da61525!2zxLBza2VuZGVydW4gVGVrbmlrIMOcbml2ZXJzaXRlc2kgKMSww5NURSkgTWVya2V6IEthbXDDvHPDvA!5e0!3m2!1str!2str!4v1708860000000!5m2!1str!2str" 
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.6044733475713!2d36.16631527638766!3d36.561573081016785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f689f21422b51%3A0xc6226c6d042655!2s%C4%B0skenderun%20Teknik%20%C3%9cniversitesi%20(Iste)!5e0!3m2!1str!2str!4v1710000000000" 
         width="100%" height="280" style="border:0; border-radius:10px; margin-top:10px;" allowfullscreen="" loading="lazy"></iframe>
 </div>
+
+<div id="bookOverlay" class="book-overlay">
+    <div class="book-modal-content">
+        <span class="book-close" onclick="closeBook()">✕ KAPAT</span>
+        <iframe id="bookFrame" src="" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+</div>
+
 <script>
 function toggle(id) {
     const el = document.getElementById(id);
     const isVisible = el.style.display === "block";
     
-    // Diğer açık listeleri kapat
     if(id !== 'contactPanel') {
         document.querySelectorAll('.dropdown-list').forEach(list => list.style.display = 'none');
     }
 
     el.style.display = isVisible ? "none" : "block";
 }
+
+// WOWBOOK FONKSİYONLARI
+function openBook() {
+    // Klasör adın PDFBOOK ise böyle kalsın. Küçük harfse pdfbook yap.
+    document.getElementById('bookFrame').src = "PDFBOOK/index.html";
+    document.getElementById('bookOverlay').style.display = "block";
+    document.body.style.overflow = "hidden"; // Arka sayfanın kaymasını engeller
+}
+
+function closeBook() {
+    document.getElementById('bookOverlay').style.display = "none";
+    document.getElementById('bookFrame').src = ""; // Belleği temizler
+    document.body.style.overflow = "auto"; // Kaydırmayı geri açar
+}
 </script>
 
 </body>
 </html>
-
-
-
-
-
