@@ -154,25 +154,40 @@ body {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.95);
-    z-index: 3000;
+    z-index: 9999;
 }
 
 /* KİTAP İÇERİĞİ KUTUSU */
 .book-modal-content {
     position: relative;
     width: 95%;
-    height: 90vh;
-    margin: 2vh auto;
+    height: 85vh;
+    margin: 7vh auto; /* Butonun üste sığması için pay bıraktık */
 }
 
-/* KAPAT BUTONU */
+/* YENİ SOL ÜST KAPAT BUTONU */
 .book-close {
     position: absolute;
-    top: -35px; right: 10px;
+    top: -55px; /* Çerçevenin üstünde durması için */
+    left: 0;
+    width: 45px;
+    height: 45px;
+    background: #b10000;
     color: white;
-    font-size: 24px;
-    cursor: pointer;
+    font-size: 28px;
     font-weight: bold;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    border: 2px solid white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+.book-close:hover {
+    background: #f39c12;
+    transform: scale(1.1);
 }
 
 /* İLETİŞİM PANELİ */
@@ -195,6 +210,7 @@ body {
 @media (max-width: 768px) {
     .menu-container { gap: 80px; }
     .menu-item { width: 100%; max-width: 290px; }
+    .book-modal-content { height: 80vh; margin: 12vh auto; }
 }
 
 .pvc-img{ transform: scale(1.15); }
@@ -259,7 +275,7 @@ body {
 
 <div id="bookOverlay" class="book-overlay">
     <div class="book-modal-content">
-        <span class="book-close" onclick="closeBook()">✕ KAPAT</span>
+        <div class="book-close" onclick="closeBook()">✕</div>
         <iframe id="bookFrame" src="" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 </div>
@@ -276,18 +292,17 @@ function toggle(id) {
     el.style.display = isVisible ? "none" : "block";
 }
 
-// WOWBOOK FONKSİYONLARI
 function openBook() {
-    // Klasör adın PDFBOOK ise böyle kalsın. Küçük harfse pdfbook yap.
+    // Klasör ismin tam olarak PDFbook olduğu için böyle güncelledim
     document.getElementById('bookFrame').src = "PDFbook/index.html";
     document.getElementById('bookOverlay').style.display = "block";
-    document.body.style.overflow = "hidden"; // Arka sayfanın kaymasını engeller
+    document.body.style.overflow = "hidden"; 
 }
 
 function closeBook() {
     document.getElementById('bookOverlay').style.display = "none";
-    document.getElementById('bookFrame').src = ""; // Belleği temizler
-    document.body.style.overflow = "auto"; // Kaydırmayı geri açar
+    document.getElementById('bookFrame').src = ""; 
+    document.body.style.overflow = "auto"; 
 }
 </script>
 
